@@ -1,5 +1,5 @@
 #include <Stepper.h>
-#include "configStepper.h"
+
 #include "moyenne.h"
 
 // for your motor
