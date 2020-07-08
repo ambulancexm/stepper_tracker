@@ -17,3 +17,4 @@
 #define pinIN6  4  // IN2 on the ULN2003 inclinaison stepper
 #define pinIN7 5  // IN3 on the ULN2003 inclinaison stepper
 #define pinIN8 6  // IN4 on the ULN2003 inclinaison stepper
+
