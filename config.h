@@ -1,6 +1,6 @@
 #include "configStepper.h"
 #include "moyenne.h"
-
+#include <Stepper.h>
 // for your motor
 #define ORANGE A0
 #define ROUGE A1

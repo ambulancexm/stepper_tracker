@@ -1,5 +1,5 @@
 #define INTERVAL 10
-#include <Stepper.h>
+
 
 const int stepsPerRevolution = 360;
 
