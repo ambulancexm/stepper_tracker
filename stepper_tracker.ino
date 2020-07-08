@@ -17,7 +17,7 @@
 
  */
 
-#include <Stepper.h>
+#include "config.h"
 
 
 
@@ -77,23 +77,13 @@ int orange_bleu = (analogRead(ORANGE)-analogRead(BLEU));
 if (orange_bleu > 10){
   int stp = stepsPerRevolution;
   azimutHoraire.setSpeed(motorSpeed);
-  if (orange_bleu <5){
-    stp = stp/16;
-  }else{
-    stp =stp /8;
-  }
-  azimutHoraire.step(stp);
+  azimutHoraire.step(stp/45);
 }
 
 if (orange_bleu < 10){
   int stp = stepsPerRevolution;
   azimutHoraire.setSpeed(motorSpeed);
-  if (orange_bleu < 5){
-    stp = stp/16;
-  }else{
-    stp =stp /8;
-  }
-  azimutHoraire.step(-stp);
+  azimutHoraire.step(-stp/45);
 }
 
 
