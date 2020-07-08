@@ -1,4 +1,3 @@
-#include <Stepper.h>
 #define BOUCLE 10
 
 int moyenne (int pin)

@@ -1,3 +1,4 @@
+#include <Stepper.h>
 #include "configStepper.h"
 #include "moyenne.h"
 #include <Stepper.h>
