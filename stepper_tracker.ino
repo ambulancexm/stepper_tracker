@@ -92,7 +92,7 @@ void chercher()
   // if index max et mini son 0 ou 2 = haut , 1 ou 3 = bas 
 }
 
-int orientation()
+int RotationSens()
 {
   //Calcul = indexMax * 4 + indexMin 
   int result = ((minMax[0][1] * 4) + minMax[1][1]);
@@ -126,6 +126,6 @@ if (digitalRead(2) == true)
 
 if (button)
 {
-  choixStepper(orientation());  
+  choixStepper(RotationSens());  
 }
 } // loop
