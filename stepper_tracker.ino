@@ -82,18 +82,29 @@ if (digitalRead(2) == true)
 void chercher()
 {
   //recherche grandeur entre 4 capteur 
-  int o = moyenne(ORANGE);
-  int r = moyenne(ROUGE);
-  int b = moyenne(BLEU);
-  int v = moyenne(VERT);
+  int val[4] = {moyenne(ORANGE), moyenne(ROUGE), moyenne(BLEU),moyenne(VERT)};
 
   int max = 0;
-  int min = 0;
+  int indexMax = -1;
+  int min = 1024;
+  int indexMin = -1;
 
-  // qui est le plus petit et qui est le plus grand ? 
-  if (o > r)
-    max = o;
-  else if ()
+  for (int i = 0; i<4; i++){
+    if (val[i] > max)
+    {
+      max = val[i];
+      indexMax = i;
+    }
+    if (val[i] < min)
+    {
+      min = val[i];
+      indexMin = i;
+    }
+  }
+
+  // if index max et mini son 0 ou 1 = droite, 2 ou 3 = gauche
+  // if index max et mini son 0 ou 2 = haut , 1 ou 3 = bas 
+ 
 }
 if (button)
 {
