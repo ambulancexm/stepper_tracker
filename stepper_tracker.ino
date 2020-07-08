@@ -64,6 +64,31 @@ Stepper inclinaisonAnti(stepsPerRevolution, pinIN5, pinIN6, pinIN7, pinIN8); // 
   Serial.println("----------");
   //delay(1000);
 
+int oriantation[4][3] ={
+  //{max, min, sens},
+  //LIGNE 1
+  {0, 0, false},
+  {0, 1, HAUT},
+  {0, 2, GAUCHE},
+  {0, 3, HAUTGAUCHE},
+  //LIGNE 2
+  {1, 0, BAS},
+  {1, 1, false},
+  {1, 2, HAUTGAUCHE},
+  {1, 3, DROITE},
+  //LIGNE 3
+  {2, 0, DROITE},
+  {2, 1, BASDROITE},
+  {2, 2, false},
+  {2, 3, BAS},
+  //LIGNE 4
+  {3, 0, BASDROITE},
+  {3, 1, GAUCHE},
+  {3, 2, HAUT},
+  {3, 3, false},
+
+}
+
 // int motorSpeed = 10;
 
 // set the motor speed:
