@@ -23,7 +23,8 @@ void moveStepper(int ref1, int ref2, int interval, Stepper stepperMotor)
 
 void choixStepper(int choix)
 {
-  stepperMotor.setSpeed(SPEEDMOTOR);
+  inclinaison.setSpeed(SPEEDMOTOR);
+  azimut.setSpeed(SPEEDMOTOR);
   int stp = stepsPerRevolution / 45;
   switch (choix)
   {
