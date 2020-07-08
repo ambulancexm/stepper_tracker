@@ -96,7 +96,8 @@ int RotationSens()
 {
   //Calcul = indexMax * 4 + indexMin 
   int result = ((minMax[0][1] * 4) + minMax[1][1]);
-
+  if ((minMax[0][1] - minMax[1][1]) > 10)
+    return false;
   return orientation[result][2];
   
 }
