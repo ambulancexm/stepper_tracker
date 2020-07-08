@@ -43,19 +43,19 @@ int orientation[16][3] = {
   {0, 0, false},
   {0, 1, HAUT},
   {0, 2, GAUCHE},
-  {0, 3, HAUT},
+  {0, 3, HAUTGAUCHE},
   //LIGNE 2
   {1, 0, BAS},
   {1, 1, false},
-  {1, 2, HAUT},
+  {1, 2, HAUTGAUCHE},
   {1, 3, DROITE},
   //LIGNE 3
   {2, 0, DROITE},
-  {2, 1, BAS},
+  {2, 1, BASDROITE},
   {2, 2, false},
   {2, 3, BAS},
   //LIGNE 4
-  {3, 0, BAS},
+  {3, 0, BASDROITE},
   {3, 1, GAUCHE},
   {3, 2, HAUT},
   {3, 3, false}
