@@ -64,7 +64,7 @@ Stepper inclinaisonAnti(stepsPerRevolution, pinIN5, pinIN6, pinIN7, pinIN8); // 
   Serial.println("----------");
   //delay(1000);
 
-int oriantation[4][3] ={
+int orientation[4][3] ={
   //{max, min, sens},
   //LIGNE 1
   {0, 0, false},
