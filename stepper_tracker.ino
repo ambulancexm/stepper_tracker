@@ -65,6 +65,12 @@ int orientation[16][3] = {
 int minMax[2][2] = {{0, -1}, {1024, -1}};
 int capteurSolaire[4] = {0, 0, 0, 0};
 int solairePin[4] = {ORANGE, ROUGE, BLEU, VERT};
+
+void raz(){
+  minMax[0][0]= -1;
+  minMax[0][1]= -1;
+}
+
 void recupValue() {
 for (int i= 0; i < 4; i++) {
   capteurSolaire[i] = moyenne(analogRead(solairePin[i]));
@@ -129,4 +135,5 @@ if (button)
 {
   choixStepper(RotationSens());  
 }
+raz();
 } // loop
