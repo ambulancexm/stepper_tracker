@@ -5,7 +5,7 @@ int moyenne (int pin)
     int i = 0;
     int moy = 0;
     while (i <= BOUCLE) {
-        moy += analogread(pin);
+        moy += analogRead(pin);
         i++;
     }
 
