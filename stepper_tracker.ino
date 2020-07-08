@@ -63,7 +63,7 @@ Stepper inclinaisonAnti(stepsPerRevolution, pinIN5, pinIN6, pinIN7, pinIN8); // 
   Serial.println("----------");
   delay(1000);
 
-int motorSpeed = 10;
+// int motorSpeed = 10;
 
 // set the motor speed:
 // if (motorSpeed > 0) {
