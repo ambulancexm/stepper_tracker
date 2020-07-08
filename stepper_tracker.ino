@@ -92,6 +92,15 @@ void chercher()
   // if index max et mini son 0 ou 2 = haut , 1 ou 3 = bas 
 }
 
+int orientation()
+{
+  //Calcul = indexMax * 4 + indexMin 
+  int result = ((minMax[0][1] * 4) + minMax[1][1]);
+
+  return orientation[result][2];
+  
+}
+
 void setup() {
   Serial.begin(115200);
   pinMode(pinBut,INPUT);
@@ -111,69 +120,12 @@ void loop() {
   Serial.print(minMax[1][0]);
   Serial.print(" Index -> ");
   Serial.println(minMax[1][1]);
-Stepper azimutHoraire(stepsPerRevolution, pinIN1, pinIN3, pinIN2, pinIN4); // Tourne dans le sens des aiguilles d'une montre, bien
-Stepper azimutAnti(stepsPerRevolution, pinIN4, pinIN2, pinIN3, pinIN1); // Tourne dans le sens des aiguilles inverse d'une montre, bien
 
-Stepper inclinaisonHoraire(stepsPerRevolution, pinIN8, pinIN6, pinIN7, pinIN5); // Tourne dans le sens des aiguilles d'une montre, bien
-Stepper inclinaisonAnti(stepsPerRevolution, pinIN5, pinIN6, pinIN7, pinIN8); // Tourne dans le sens des aiguilles inverse d'une montre, bien
-//===========
-// read the sensor value:
-// int sensorReading = analogRead(A0);
-// map it to a range from 0 to 100:
-// int motorSpeed = map(sensorReading, 0, 1023, 0, 100);
-
-
-
- Serial.print("ORANGE->");
-  Serial.println(capteurSolaire[0]);
-  Serial.print("ROUGE->");
-  Serial.println(capteurSolaire[1]);
-  Serial.print("VERT->");
-  Serial.println(capteurSolaire[2]);
-  Serial.print("BLEU->");
-  Serial.println(capteurSolaire[3]);
-  Serial.println("----------");
-  //delay(1000);
-
-// int motorSpeed = 10;
-
-// set the motor speed:
-// if (motorSpeed > 0) {
-//   inclinaisonAnti2.setSpeed(motorSpeed);
-//   myStepper.setSpeed(motorSpeed);
-//   // step 1/16 of a revolution:
-//   myStepper2.step(stepsPerRevolution / 16);
-//   myStepper.step(stepsPerRevolution / 16);
-//   }
-Serial.println(digitalRead(2));
-Serial.println(button);
 if (digitalRead(2) == true)
   button = !button;
 
 if (button)
 {
-  int droite = moyenne(ORANGE) + moyenne(ROUGE);
-  int gauche = moyenne(BLEU) + moyenne(VERT);
-  moveStepper(gauche ,droite, 10, azimutHoraire);
-
-  int haut = moyenne(ORANGE) + moyenne(BLEU);
-  int bas = moyenne(VERT) + moyenne(ROUGE);
-  moveStepper(bas, haut, 10, inclinaisonHoraire);
-  
+  choixStepper(orientation());  
 }
-
-// int orange_bleu = (analogRead(ORANGE)-analogRead(BLEU));
-// if (orange_bleu > 10){
-//   int stp = stepsPerRevolution;
-//   azimutHoraire.setSpeed(motorSpeed);
-//   azimutHoraire.step(stp/45);
-// }
-
-// if (orange_bleu < 10){
-//   int stp = stepsPerRevolution;
-//   azimutHoraire.setSpeed(motorSpeed);
-//   azimutHoraire.step(-stp/45);
-// }
-
-
 } // loop
