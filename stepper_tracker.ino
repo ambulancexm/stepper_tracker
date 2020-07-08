@@ -32,6 +32,8 @@
 //Stepper myStepper(stepsPerRevolution, pinIN4, pinIN2, pinIN3, pinIN1); // Tourne dans le sens trigonométrique, bien
 int stepCount = 0;  // number of steps the motor has taken
 
+int button = 0;
+
 void setup() {
   Serial.begin(115200);
 //============
@@ -71,7 +73,12 @@ int motorSpeed = 10;
 //   myStepper2.step(stepsPerRevolution / 16);
 //   myStepper.step(stepsPerRevolution / 16);
 //   }
-moveStepper(analogRead(ORANGE),analogRead(BLEU),10,azimutHoraire);
+if (digitalRead(2) == true && button = 0)
+  button = 1;
+else if (digitalRead(2) == true && button = 1)
+  button = 0;
+if (button)
+  moveStepper(analogRead(ORANGE),analogRead(BLEU),10,azimutHoraire);
 
 // int orange_bleu = (analogRead(ORANGE)-analogRead(BLEU));
 // if (orange_bleu > 10){
