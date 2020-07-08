@@ -33,9 +33,10 @@
 int stepCount = 0;  // number of steps the motor has taken
 
 int button = 0;
-
+int pinBut = 2;
 void setup() {
   Serial.begin(115200);
+  pinMode(pinBut,INPUT);
 //============
 // nothing to do inside the setup
 } // setup
