@@ -71,20 +71,20 @@ int motorSpeed = 10;
 //   myStepper2.step(stepsPerRevolution / 16);
 //   myStepper.step(stepsPerRevolution / 16);
 //   }
+moveStepper(ORANGE,BLEU,10,azimutHoraire);
 
+// int orange_bleu = (analogRead(ORANGE)-analogRead(BLEU));
+// if (orange_bleu > 10){
+//   int stp = stepsPerRevolution;
+//   azimutHoraire.setSpeed(motorSpeed);
+//   azimutHoraire.step(stp/45);
+// }
 
-int orange_bleu = (analogRead(ORANGE)-analogRead(BLEU));
-if (orange_bleu > 10){
-  int stp = stepsPerRevolution;
-  azimutHoraire.setSpeed(motorSpeed);
-  azimutHoraire.step(stp/45);
-}
-
-if (orange_bleu < 10){
-  int stp = stepsPerRevolution;
-  azimutHoraire.setSpeed(motorSpeed);
-  azimutHoraire.step(-stp/45);
-}
+// if (orange_bleu < 10){
+//   int stp = stepsPerRevolution;
+//   azimutHoraire.setSpeed(motorSpeed);
+//   azimutHoraire.step(-stp/45);
+// }
 
 
 } // loop
