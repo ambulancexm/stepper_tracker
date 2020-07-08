@@ -34,37 +34,18 @@ int stepCount = 0;  // number of steps the motor has taken
 
 int button = 0;
 int pinBut = 2;
-void setup() {
-  Serial.begin(115200);
-  pinMode(pinBut,INPUT);
-//============
-// nothing to do inside the setup
-} // setup
 
-void loop() {
-Stepper azimutHoraire(stepsPerRevolution, pinIN1, pinIN3, pinIN2, pinIN4); // Tourne dans le sens des aiguilles d'une montre, bien
-Stepper azimutAnti(stepsPerRevolution, pinIN4, pinIN2, pinIN3, pinIN1); // Tourne dans le sens des aiguilles inverse d'une montre, bien
+#define HAUT 10
+#define BAS 11
+#define GAUCHE 12
+#define DROITE 13
+#define HAUTGAUCHE 14
+#define HAUTDROITE 15
+#define BASGAUCHE 16
+#define BASDROITE 17
 
-Stepper inclinaisonHoraire(stepsPerRevolution, pinIN8, pinIN6, pinIN7, pinIN5); // Tourne dans le sens des aiguilles d'une montre, bien
-Stepper inclinaisonAnti(stepsPerRevolution, pinIN5, pinIN6, pinIN7, pinIN8); // Tourne dans le sens des aiguilles inverse d'une montre, bien
-//===========
-// read the sensor value:
-// int sensorReading = analogRead(A0);
-// map it to a range from 0 to 100:
-// int motorSpeed = map(sensorReading, 0, 1023, 0, 100);
 
- Serial.print("ORANGE->");
-  Serial.println(analogRead(ORANGE));
-  Serial.print("ROUGE->");
-  Serial.println(analogRead(ROUGE));
-  Serial.print("VERT->");
-  Serial.println(analogRead(VERT));
-  Serial.print("BLEU->");
-  Serial.println(analogRead(BLEU));
-  Serial.println("----------");
-  //delay(1000);
-
-int orientation[4][3] ={
+int orientation[16][3] = {
   //{max, min, sens},
   //LIGNE 1
   {0, 0, false},
@@ -85,9 +66,82 @@ int orientation[4][3] ={
   {3, 0, BASDROITE},
   {3, 1, GAUCHE},
   {3, 2, HAUT},
-  {3, 3, false},
+  {3, 3, false}
 
+};
+
+int minMax[2][2] = {{0, -1}, {1024, -1}};
+int capteurSolaire[4] = {0, 0, 0, 0};
+int solairePin[5] = {ORANGE, ROUGE, BLEU, VERT, 0};
+void recupValue() {
+for (int i= 0; solairePin[i] == 0; i++) {
+  capteurSolaire[i] = moyenne(analogRead(solairePin[i]));
 }
+}
+void chercher()
+{
+  //recherche grandeur entre 4 capteur 
+  int val[4] = {capteurSolaire[0], capteurSolaire[1], capteurSolaire[2], capteurSolaire[3]};
+
+  for (int i = 0; i<4; i++){
+    if (val[i] > minMax[0][0])
+    {
+      minMax[0][0] = val[i];
+      minMax[0][1] = i;
+    }
+    if (val[i] < minMax[1][0])
+    {
+      minMax[1][0] = val[i];
+      minMax[1][1] = i;
+    }
+  }
+
+  // if index max et mini son 0 ou 1 = droite, 2 ou 3 = gauche
+  // if index max et mini son 0 ou 2 = haut , 1 ou 3 = bas 
+}
+
+void setup() {
+  Serial.begin(115200);
+  pinMode(pinBut,INPUT);
+//============
+// nothing to do inside the setup
+} // setup
+
+void loop() {
+  recupValue();
+  chercher();
+  Serial.print("MAX : valeur -> ");
+  Serial.print(minMax[0][0]);
+  Serial.print(" Index -> ");
+  Serial.println(minMax[0][1]);
+
+  Serial.print("MIN : valeur -> ");
+  Serial.print(minMax[1][0]);
+  Serial.print(" Index -> ");
+  Serial.println(minMax[1][1]);
+Stepper azimutHoraire(stepsPerRevolution, pinIN1, pinIN3, pinIN2, pinIN4); // Tourne dans le sens des aiguilles d'une montre, bien
+Stepper azimutAnti(stepsPerRevolution, pinIN4, pinIN2, pinIN3, pinIN1); // Tourne dans le sens des aiguilles inverse d'une montre, bien
+
+Stepper inclinaisonHoraire(stepsPerRevolution, pinIN8, pinIN6, pinIN7, pinIN5); // Tourne dans le sens des aiguilles d'une montre, bien
+Stepper inclinaisonAnti(stepsPerRevolution, pinIN5, pinIN6, pinIN7, pinIN8); // Tourne dans le sens des aiguilles inverse d'une montre, bien
+//===========
+// read the sensor value:
+// int sensorReading = analogRead(A0);
+// map it to a range from 0 to 100:
+// int motorSpeed = map(sensorReading, 0, 1023, 0, 100);
+
+
+
+ Serial.print("ORANGE->");
+  Serial.println(capteurSolaire[0]);
+  Serial.print("ROUGE->");
+  Serial.println(capteurSolaire[1]);
+  Serial.print("VERT->");
+  Serial.println(capteurSolaire[2]);
+  Serial.print("BLEU->");
+  Serial.println(capteurSolaire[3]);
+  Serial.println("----------");
+  //delay(1000);
 
 // int motorSpeed = 10;
 
@@ -104,33 +158,6 @@ Serial.println(button);
 if (digitalRead(2) == true)
   button = !button;
 
-void chercher()
-{
-  //recherche grandeur entre 4 capteur 
-  int val[4] = {moyenne(ORANGE), moyenne(ROUGE), moyenne(BLEU),moyenne(VERT)};
-
-  int max = 0;
-  int indexMax = -1;
-  int min = 1024;
-  int indexMin = -1;
-
-  for (int i = 0; i<4; i++){
-    if (val[i] > max)
-    {
-      max = val[i];
-      indexMax = i;
-    }
-    if (val[i] < min)
-    {
-      min = val[i];
-      indexMin = i;
-    }
-  }
-
-  // if index max et mini son 0 ou 1 = droite, 2 ou 3 = gauche
-  // if index max et mini son 0 ou 2 = haut , 1 ou 3 = bas 
- 
-}
 if (button)
 {
   int droite = moyenne(ORANGE) + moyenne(ROUGE);
