@@ -73,9 +73,9 @@ Stepper inclinaisonAnti(stepsPerRevolution, pinIN5, pinIN6, pinIN7, pinIN8); // 
 //   myStepper2.step(stepsPerRevolution / 16);
 //   myStepper.step(stepsPerRevolution / 16);
 //   }
-if (digitalRead(2) == true && button = 0)
+if (digitalRead(2) == true && button == 0)
   button = 1;
-else if (digitalRead(2) == true && button = 1)
+else if (digitalRead(2) == true && button == 1)
   button = 0;
 if (button)
   moveStepper(analogRead(ORANGE),analogRead(BLEU),10,azimutHoraire);
