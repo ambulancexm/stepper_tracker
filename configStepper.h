@@ -37,32 +37,32 @@ void choixStepper(int choix)
   switch (choix)
   {
   case HAUT:
-    inclinaison.step(stp);
+    inclinaison.step(-stp);
     break;
   case BAS:
-    inclinaison.step(-stp);
+    inclinaison.step(stp);
     break;
   case GAUCHE:
-    azimut.step(-stp);
+    azimut.step(stp);
     break;
   case DROITE:
-    azimut.step(stp);
+    azimut.step(-stp);
     break;
   case HAUTGAUCHE:
-    inclinaison.step(stp);
-    azimut.step(-stp);
+    inclinaison.step(-stp);
+    azimut.step(stp);
     break;
   case HAUTDROITE:
-    inclinaison.step(stp);
-    azimut.step(stp);
-    break;
-  case BASGAUCHE:
     inclinaison.step(-stp);
     azimut.step(-stp);
     break;
-  case BASDROITE:
-    inclinaison.step(-stp);
+  case BASGAUCHE:
+    inclinaison.step(stp);
     azimut.step(stp);
+    break;
+  case BASDROITE:
+    inclinaison.step(stp);
+    azimut.step(-stp);
     break;
   }
 }

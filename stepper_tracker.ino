@@ -43,19 +43,19 @@ int orientation[16][3] = {
   {0, 0, false},
   {0, 1, HAUT},
   {0, 2, GAUCHE},
-  {0, 3, HAUTGAUCHE},
+  {0, 3, HAUT},
   //LIGNE 2
   {1, 0, BAS},
   {1, 1, false},
-  {1, 2, HAUTGAUCHE},
+  {1, 2, HAUT},
   {1, 3, DROITE},
   //LIGNE 3
   {2, 0, DROITE},
-  {2, 1, BASDROITE},
+  {2, 1, BAS},
   {2, 2, false},
   {2, 3, BAS},
   //LIGNE 4
-  {3, 0, BASDROITE},
+  {3, 0, BAS},
   {3, 1, GAUCHE},
   {3, 2, HAUT},
   {3, 3, false}
@@ -64,9 +64,9 @@ int orientation[16][3] = {
 
 int minMax[2][2] = {{0, -1}, {1024, -1}};
 int capteurSolaire[4] = {0, 0, 0, 0};
-int solairePin[5] = {ORANGE, ROUGE, BLEU, VERT, 0};
+int solairePin[4] = {ORANGE, ROUGE, BLEU, VERT};
 void recupValue() {
-for (int i= 0; solairePin[i] == 0; i++) {
+for (int i= 0; i < 4; i++) {
   capteurSolaire[i] = moyenne(analogRead(solairePin[i]));
 }
 }
