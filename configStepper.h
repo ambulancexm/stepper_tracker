@@ -1,3 +1,4 @@
+#include "config.h"
 #define INTERVAL 10
 #define SPEEDMOTOR 10
 
