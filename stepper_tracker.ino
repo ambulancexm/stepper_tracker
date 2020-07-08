@@ -62,7 +62,7 @@ Stepper inclinaisonAnti(stepsPerRevolution, pinIN5, pinIN6, pinIN7, pinIN8); // 
   Serial.print("BLEU->");
   Serial.println(analogRead(BLEU));
   Serial.println("----------");
-  delay(1000);
+  //delay(1000);
 
 // int motorSpeed = 10;
 
@@ -74,12 +74,16 @@ Stepper inclinaisonAnti(stepsPerRevolution, pinIN5, pinIN6, pinIN7, pinIN8); // 
 //   myStepper2.step(stepsPerRevolution / 16);
 //   myStepper.step(stepsPerRevolution / 16);
 //   }
-if (digitalRead(2) == true && button == 0)
-  button = 1;
-else if (digitalRead(2) == true && button == 1)
-  button = 0;
+Serial.println(digitalRead(2));
+Serial.println(button);
+if (digitalRead(2) == true)
+  button = !button;
 if (button)
-  moveStepper(analogRead(ORANGE),analogRead(BLEU),10,azimutHoraire);
+{
+  moveStepper(moyenne(ORANGE),moyenne(BLEU),10,azimutHoraire);
+  moveStepper(moyenne(BLEU),moyenne(VERT),10,inclinaisonHoraire);
+  
+}
 
 // int orange_bleu = (analogRead(ORANGE)-analogRead(BLEU));
 // if (orange_bleu > 10){
