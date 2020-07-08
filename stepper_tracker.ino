@@ -35,14 +35,6 @@ int stepCount = 0;  // number of steps the motor has taken
 int button = 0;
 int pinBut = 2;
 
-#define HAUT 10
-#define BAS 11
-#define GAUCHE 12
-#define DROITE 13
-#define HAUTGAUCHE 14
-#define HAUTDROITE 15
-#define BASGAUCHE 16
-#define BASDROITE 17
 
 
 int orientation[16][3] = {
