@@ -19,22 +19,7 @@
 
 #include <Stepper.h>
 
-const int stepsPerRevolution = 500;  // change this to fit the number of steps per revolution
-// for your motor
-#define ORANGE A0
-#define ROUGE A1
-#define VERT A2
-#define BLEU A3
 
-#define pinIN1  8  // IN1 on the ULN2003 driver 1
-#define pinIN2  9  // IN2 on the ULN2003 driver 1
-#define pinIN3 10  // IN3 on the ULN2003 driver 1
-#define pinIN4 11  // IN4 on the ULN2003 driver 1
-
-#define pinIN5  3  // IN1 on the ULN2003 driver 1
-#define pinIN6  4  // IN2 on the ULN2003 driver 1
-#define pinIN7 5  // IN3 on the ULN2003 driver 1
-#define pinIN8 6  // IN4 on the ULN2003 driver 1
 
 // initialize the stepper library on pins 8 through 11:
 //Stepper myStepper(stepsPerRevolution, 10, 11, 9, 8);  // 11, 10, 9, 8  pas bon
@@ -86,6 +71,8 @@ int motorSpeed = 10;
 //   myStepper2.step(stepsPerRevolution / 16);
 //   myStepper.step(stepsPerRevolution / 16);
 //   }
+
+
 int orange_bleu = (analogRead(ORANGE)-analogRead(BLEU));
 if (orange_bleu > 10){
   int stp = stepsPerRevolution;
