@@ -78,12 +78,32 @@ Serial.println(digitalRead(2));
 Serial.println(button);
 if (digitalRead(2) == true)
   button = !button;
+
+void chercher()
+{
+  //recherche grandeur entre 4 capteur 
+  int o = moyenne(ORANGE);
+  int r = moyenne(ROUGE);
+  int b = moyenne(BLEU);
+  int v = moyenne(VERT);
+
+  int max = 0;
+  int min = 0;
+
+  // qui est le plus petit et qui est le plus grand ? 
+  if (o > r)
+    max = o;
+  else if ()
+}
 if (button)
 {
-  int gauche = moyenne(ORANGE) + moyenne(ROUGE);
-  int droite = moyenne(BLEU) + moyenne(VERT);
+  int droite = moyenne(ORANGE) + moyenne(ROUGE);
+  int gauche = moyenne(BLEU) + moyenne(VERT);
   moveStepper(gauche ,droite, 10, azimutHoraire);
-  //moveStepper(moyenne(BLEU),moyenne(VERT),10,inclinaisonHoraire);
+
+  int haut = moyenne(ORANGE) + moyenne(BLEU);
+  int bas = moyenne(VERT) + moyenne(ROUGE);
+  moveStepper(bas, haut, 10, inclinaisonHoraire);
   
 }
 
