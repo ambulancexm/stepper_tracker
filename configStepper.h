@@ -1,6 +1,14 @@
-#include "config.h"
 #define INTERVAL 10
 #define SPEEDMOTOR 10
+
+#define HAUT 10
+#define BAS 11
+#define GAUCHE 12
+#define DROITE 13
+#define HAUTGAUCHE 14
+#define HAUTDROITE 15
+#define BASGAUCHE 16
+#define BASDROITE 17
 
 const int stepsPerRevolution = 360;
 Stepper azimut(stepsPerRevolution, pinIN1, pinIN3, pinIN2, pinIN4);      // positif horaire négatif antihoraire
@@ -37,14 +45,14 @@ void choixStepper(int choix)
   case GAUCHE:
     azimut.step(-stp);
     break;
-  case DROIT:
+  case DROITE:
     azimut.step(stp);
     break;
   case HAUTGAUCHE:
     inclinaison.step(stp);
     azimut.step(-stp);
     break;
-  case HAUTDROIT:
+  case HAUTDROITE:
     inclinaison.step(stp);
     azimut.step(stp);
     break;
@@ -52,7 +60,7 @@ void choixStepper(int choix)
     inclinaison.step(-stp);
     azimut.step(-stp);
     break;
-  case BASDROIT:
+  case BASDROITE:
     inclinaison.step(-stp);
     azimut.step(stp);
     break;
