@@ -1,6 +1,4 @@
 #include <Stepper.h>
-#include "configStepper.h"
-#include "moyenne.h"
 
 // for your motor
 #define ORANGE A0
@@ -19,3 +17,5 @@
 #define pinIN8 6  // IN4 on the ULN2003 inclinaison stepper
 
 
+#include "configStepper.h"
+#include "moyenne.h"
