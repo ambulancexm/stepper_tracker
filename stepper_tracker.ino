@@ -80,8 +80,10 @@ if (digitalRead(2) == true)
   button = !button;
 if (button)
 {
-  moveStepper(moyenne(ORANGE),moyenne(BLEU),10,azimutHoraire);
-  moveStepper(moyenne(BLEU),moyenne(VERT),10,inclinaisonHoraire);
+  int gauche = moyenne(ORANGE) + moyenne(ROUGE);
+  int droite = moyenne(BLEU) + moyenne(VERT);
+  moveStepper(gauche ,droite, 10, azimutHoraire);
+  //moveStepper(moyenne(BLEU),moyenne(VERT),10,inclinaisonHoraire);
   
 }
 
