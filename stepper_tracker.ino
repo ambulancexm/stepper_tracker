@@ -71,7 +71,7 @@ Stepper inclinaisonAnti(stepsPerRevolution, pinIN5, pinIN6, pinIN7, pinIN8); // 
 //   myStepper2.step(stepsPerRevolution / 16);
 //   myStepper.step(stepsPerRevolution / 16);
 //   }
-moveStepper(ORANGE,BLEU,10,azimutHoraire);
+moveStepper(analogRead(ORANGE),analogRead(BLEU),10,azimutHoraire);
 
 // int orange_bleu = (analogRead(ORANGE)-analogRead(BLEU));
 // if (orange_bleu > 10){
