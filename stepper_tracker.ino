@@ -32,8 +32,8 @@
 //Stepper myStepper(stepsPerRevolution, pinIN4, pinIN2, pinIN3, pinIN1); // Tourne dans le sens trigonométrique, bien
 int stepCount = 0;  // number of steps the motor has taken
 
-int button = 0;
-int pinBut = 2;
+int etatButton = 0;
+int pinButtonArret = 2;
 
 
 
@@ -67,8 +67,8 @@ int capteurSolaire[4] = {0, 0, 0, 0};
 int solairePin[4] = {ORANGE, ROUGE, BLEU, VERT};
 
 void raz(){
-  minMax[0][0]= -1;
-  minMax[0][1]= -1;
+  //minMax[0][0]= -1;
+  //minMax[1][0]= -1;
 }
 
 void recupValue() {
@@ -110,7 +110,7 @@ int RotationSens()
 
 void setup() {
   Serial.begin(115200);
-  pinMode(pinBut,INPUT);
+  pinMode(pinButtonArret,INPUT);
 //============
 // nothing to do inside the setup
 } // setup
@@ -128,10 +128,10 @@ void loop() {
   Serial.print(" Index -> ");
   Serial.println(minMax[1][1]);
 
-if (digitalRead(2) == true)
-  button = !button;
+if (digitalRead(pinButtonArret) == true)
+  etatButton = !etatButton;
 
-if (button)
+if (etatButton)
 {
   choixStepper(RotationSens());  
 }
